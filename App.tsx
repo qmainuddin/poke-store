@@ -9,12 +9,14 @@ import {
   View,
 } from 'react-native';
 import { Home } from './src/screens';
+import { NativeScreenNavigationContainer } from 'react-native-screens';
+import { NavigationContainerComponent } from './src/navigators';
 
 function App(): React.JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
 
   return (
-    <Home/>
+    <NavigationContainerComponent/>
   );
 }
 

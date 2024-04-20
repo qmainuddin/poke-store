@@ -1,12 +1,12 @@
 import HomeStack from "./HomeStack";
-import CartStack from "./CartStack";
+import ProfileStack from "./ProfileStack";
 import BottomTab from './BottomTab';
 import NavigationContainerComponent from "./NavigationContainerComponent";
 
 
 export {
     HomeStack,
-    CartStack,
+    ProfileStack,
     BottomTab,
     NavigationContainerComponent,
 }

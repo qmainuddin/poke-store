@@ -4,7 +4,7 @@ import { FC, useEffect, useState } from "react";
 import { StyleSheet } from "react-native";
 import { default as commonStyle } from '../common/Styles'
 import { useDispatch, useSelector } from "react-redux";
-import { fetchPokemonData } from "../api/PokecmonAPI";
+import { fetchPokemonData } from "../services/PokecmonService";
 import { fetchPokemonDataActions, changeSelection } from '../reducers/PokemonDataReducer'
 import Loader from "./Loader";
 
@@ -40,7 +40,7 @@ const PokemonCard : FC<Props> = ({ url }) : any => {
     const details = data.get(url);
     
     return (
-        <View style={[styles.container]}>
+        <View style={[styles.container, {backgroundColor: '#f7f2f5'}]}>
             {
                 !details ? (<Loader loading={true}/>) :
                 (

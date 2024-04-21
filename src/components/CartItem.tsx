@@ -8,12 +8,12 @@ type Props = {
     item: CartDetailsData,
 }
 
-const CartItem : FC<Props> = (props : Props) => {
+const CartItem: FC<Props> = (props: Props) => {
     const { item } = props;
     const dispatch = useDispatch();
     const { loading, cartList, error } = useSelector((state: any) => state.cart);
 
-    const [ count, setCount ] = useState(item.count);
+    const [count, setCount] = useState(item.count);
 
     const plusItem = (item: CartDetailsData) => {
         setCount(count + 1);
@@ -41,27 +41,27 @@ const CartItem : FC<Props> = (props : Props) => {
     }
 
     return (
-        <View style={[commonStyle.row, {marginBottom: 5, justifyContent: 'space-between', borderColor: ''}]}>
-                <View style={commonStyle.row}>
-                <Image source={{uri: item.icon? item.icon : ""}} resizeMode="contain" style={styles.image}/>
+        <View style={[commonStyle.row, { marginBottom: 5, justifyContent: 'space-between', borderColor: '' }]}>
+            <View style={commonStyle.row}>
+                <Image source={{ uri: item.icon ? item.icon : "" }} resizeMode="contain" style={styles.image} />
                 <View style={[commonStyle.centerAlign]}>
                     <Text style={[commonStyle.normalText]}>Name: {item.name}</Text>
                     <Text style={[commonStyle.normalText]}>Weight: {item.weight}</Text>
                 </View>
-                </View>
-                <View style={[commonStyle.centerAlign]}>
-                    <Text style={commonStyle.normalText}>Quantity {count}</Text>
-                    <View style={[commonStyle.buttonContainer, commonStyle.row]}>
-                        <TouchableOpacity onPress={() => plusItem(item)}
+            </View>
+            <View style={[commonStyle.centerAlign]}>
+                <Text style={commonStyle.normalText}>Quantity {count}</Text>
+                <View style={[commonStyle.buttonContainer, commonStyle.row]}>
+                    <TouchableOpacity onPress={() => minusItem(item)} style={[commonStyle.button, styles.negativeButton]}>
+                        <Text style={[commonStyle.normalText, styles.buttonText]}>-</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => plusItem(item)}
                         style={[commonStyle.button, styles.positiveButton]}>
-                            <Text style={[commonStyle.normalText, styles.buttonText]}>+</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity onPress={() => minusItem(item)} style={[commonStyle.button, styles.negativeButton]}>
-                            <Text style={[commonStyle.normalText, styles.buttonText]}>-</Text>
-                        </TouchableOpacity>
-                    </View>
+                        <Text style={[commonStyle.normalText, styles.buttonText]}>+</Text>
+                    </TouchableOpacity>
                 </View>
             </View>
+        </View>
     );
 }
 

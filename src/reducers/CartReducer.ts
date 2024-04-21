@@ -9,7 +9,7 @@ export interface CartDetailsData {
     count: number,
 }
 
-interface CartState {
+export interface CartState {
     loading: boolean,
     cartList: CartDetailsData[],
     error: string | null | undefined

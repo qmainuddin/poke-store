@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { fetchPokemonData, fetchPokemonList } from "../api/PokecmonAPI";
+import { fetchPokemonData, fetchPokemonList } from "../services/PokecmonService";
 import { PokemonList } from "../interfaces";
 
 interface PokemonState {

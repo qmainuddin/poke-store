@@ -1,3 +1,9 @@
 {
-  "extends": "@react-native/typescript-config/tsconfig.json"
+  "extends": "@react-native/typescript-config/tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": ".", // Set baseUrl to current directory
+    "paths": {
+      "os": ["node_modules/os"] // Add a path mapping for the 'os' module
+    }
+  }
 }

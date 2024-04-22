@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { fetchPokemonData, fetchPokemonList } from "../services/PokecmonService";
 import { PokemonList } from "../interfaces";
+import logger from '../../logger';
 
 interface PokemonState {
     loading: boolean,
@@ -23,6 +24,7 @@ const pokemonSlice = createSlice ({
         .addCase(fetchPokemonList.pending, (state) => {
             state.loading = true;
             state.error = null;
+            logger.info('Fetching Pokemon List.....');
         }).addCase(fetchPokemonList.fulfilled, (state, action: PayloadAction<any[]>) => {
             state.loading = false;
             state.error = null;
@@ -33,5 +35,7 @@ const pokemonSlice = createSlice ({
         });
     }
 });
+
+export const fetchPokemonListActions = fetchPokemonList;
 
 export default pokemonSlice.reducer;

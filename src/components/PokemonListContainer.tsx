@@ -6,6 +6,7 @@ import PokemonCard from "./PokemonCard";
 import { View } from "react-native";
 import Pokemon from "../interfaces/Pokemon";
 import { default as commonStyle } from "../common/Styles";
+import logger from '../../logger'
 
 type Props = {
     pokemons?: any[],
@@ -13,7 +14,7 @@ type Props = {
 }
 
 function loadMore() {
-    console.log("Load more is called")
+    logger.info('Load more is called.');
 }
 
 const PokemonListContainer = (props: Props) => {

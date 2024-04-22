@@ -1,6 +1,8 @@
+import { EntityId } from "@reduxjs/toolkit";
+
 export default interface Pokemon {
-    id?: number,
-    name?: string,
+    id: number | EntityId,
+    name: string,
     sprites?: {
         front_default: string,
         back_default: string,

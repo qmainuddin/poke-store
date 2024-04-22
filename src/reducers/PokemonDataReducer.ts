@@ -49,6 +49,7 @@ const pokemonDataSlice = createSlice ({
     },
     extraReducers: (builder) => {
         builder
+        //Implemented lazy loading because, this slice will call fetchPokemonData only when this is dispatched
         .addCase(fetchPokemonData.pending, (state) => {
             state.loading = false;
             state.error = null;

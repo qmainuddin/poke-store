@@ -29,10 +29,6 @@ const PokemonCard : FC<Props> = ({ url }) : any => {
         fetchDataForPokemon();
     }, [url]);
 
-    // useEffect(() => {
-    //     dispatch(changeSelection(url, details, !selected));
-    // }, [selected]);
-
     if (error) {
         return (
             <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>

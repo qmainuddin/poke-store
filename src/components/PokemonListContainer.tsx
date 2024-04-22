@@ -8,7 +8,7 @@ import Pokemon from "../interfaces/Pokemon";
 import { default as commonStyle } from "../common/Styles";
 
 type Props = {
-    pokemons?: [],
+    pokemons?: any[],
     loading: boolean,
 }
 

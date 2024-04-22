@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react'
+import { FC, useEffect, useMemo, useState } from 'react'
 import { StyleSheet, Text, View, Image } from 'react-native';
 import {default as commonStyles} from '../common/Styles';
 import PokemonList from '../interfaces/PokemonList';
@@ -8,16 +8,24 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchPokemonList, fetchPokemonData } from '../services/PokecmonService';
 import { values } from '../common/Constants';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-
+import { selectPokemonList } from '../selectors/PokemonListSelector';
+import { RootState } from '../store';
 
 
 const Home: FC = ({}) => {
     const dispatch = useDispatch();
     const { loading, list, error } = useSelector((state: any) => state.pokemon);
+    //const pokemonList = useSelector((state: RootState) => selectPokemonList(state));
+
+    // Memoize the list using useMemo to prevent unnecessary re-renders
+      const memoizedPokemonList = useMemo(() => list.results, [list]);
+
 
     useEffect(() => {
         dispatch(fetchPokemonList(values.BASE_URL));
-    }, [dispatch])
+    }
+    , [dispatch]
+)
 
 
     const gotoPage = (url: string) => {
@@ -28,7 +36,7 @@ const Home: FC = ({}) => {
     
     return (
         <View style={[commonStyles.main, commonStyles.contentPadding, {backgroundColor: '#fff'}]}>
-            <PokemonListContainer loading={loading} pokemons={list.results}/>
+            <PokemonListContainer loading={loading} pokemons={memoizedPokemonList}/>
             <View style={[commonStyles.buttonContainer, {backgroundColor: '#fff'}]}>
                 <TouchableOpacity style={[commonStyles.button, 
                     !list.previous ? commonStyles.disabled : null

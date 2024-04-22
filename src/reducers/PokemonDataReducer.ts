@@ -27,10 +27,10 @@ const pokemonDataSlice = createSlice ({
                 } else {
                     if (state.selectedCount > 0) state.selectedCount--;
                 }
-                console.log('==========Pokemon Reducer Start================');
-                console.log(action.payload);
-                console.log('Selected Count: ' + state.selectedCount);
-                console.log('==========Pokemon Reducer End=======');
+                // console.log('==========Pokemon Reducer Start================');
+                // console.log(action.payload);
+                // console.log('Selected Count: ' + state.selectedCount);
+                // console.log('==========Pokemon Reducer End=======');
                 state.data.set(action.payload.url, action.payload.details);
             },
             prepare: (url: string, item: any, selected: boolean) => {

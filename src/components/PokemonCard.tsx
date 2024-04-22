@@ -1,6 +1,6 @@
 import { Image, Text, TouchableOpacity, View } from "react-native";
 import Pokemon from "../interfaces/Pokemon";
-import { FC, useEffect, useState } from "react";
+import { FC, useEffect, useMemo, useState } from "react";
 import { StyleSheet } from "react-native";
 import { default as commonStyle } from '../common/Styles'
 import { useDispatch, useSelector } from "react-redux";
@@ -17,6 +17,9 @@ const PokemonCard : FC<Props> = ({ url }) : any => {
     const [selected, setSelected] = useState(false);
 
     const { loading, data, error } = useSelector((state: any) => state.pokemonData);
+
+    // Memoize the list using useMemo to prevent unnecessary re-renders
+    const memoizedPokemonData = useMemo(() => data, [data]);
 
     const fetchDataForPokemon = () => {
         dispatch(fetchPokemonDataActions(url));
@@ -37,7 +40,8 @@ const PokemonCard : FC<Props> = ({ url }) : any => {
             </View>
           );
     }
-    const details = data.get(url);
+    // const details = data.get(url);
+    const details = memoizedPokemonData.get(url);
     
     return (
         <View style={[styles.container, {backgroundColor: '#f7f2f5'}]}>
